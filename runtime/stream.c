@@ -1325,7 +1325,7 @@ CODESTARTobjDestruct(strm)
 	 * IMPORTANT: we MUST free this only AFTER the ansyncWriter has been stopped, else
 	 * we get random errors...
 	 */
-	if(pThis->compressionDriver == STRM_COMPRESS_ZSTD) {
+	if(pThis->compressionDriver == STRM_COMPRESS_ZSTD && zstdw.Destruct) {
 		zstdw.Destruct(pThis);
 	}
 	if(pThis->prevLineSegment)
